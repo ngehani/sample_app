@@ -4,6 +4,10 @@
 
 $grayMediumLight: #eaeaea;
 
+<<<<<<< HEAD
+=======
+/* Rails Tutorial Sign-up Section 7-1 adding pretty debug box */
+>>>>>>> sign-up
 @mixin box_sizing {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -112,13 +116,18 @@ footer {
 
 /* footer */
 
+<<<<<<< HEAD
 /* miscellaneous */
+=======
+/* miscellaneous - Rails Tutorial Sign-up Section 7-1 adding pretty debug box */
+>>>>>>> sign-up
 
 .debug_dump {
   clear: both;
   float: left;
   width: 100%;
   margin-top: 45px;
+<<<<<<< HEAD
   @include box_sizing;
 }
 
@@ -126,6 +135,13 @@ footer {
 
 /* sidebar */
 
+=======
+  @include box-sizing;
+}
+
+/* sidebar */
+
+>>>>>>> sign-up
 aside {
   section {
     padding: 10px 0;

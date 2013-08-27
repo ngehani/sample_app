@@ -12,6 +12,10 @@ describe "User pages" do
     it { should have_title(user.name) }
   end
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> sign-up
   describe "signup page" do
     before { visit signup_path }
 
