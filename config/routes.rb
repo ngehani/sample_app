@@ -3,7 +3,7 @@ SampleApp::Application.routes.draw do
   #get "users/new"
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
-  root  to: 'static_pages#home'
+  root 'static_pages#home'
 
   # For every resource there is a match - via are HTTP request method
   match '/signup',  to: 'users#new',            via: 'get'
