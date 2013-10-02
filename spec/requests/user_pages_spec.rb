@@ -58,9 +58,10 @@ describe "User pages" do
         it { should have_selector('div.alert.alert-success', text: 'Welcome') }
       end
 
-      it "should create a user" do
-        expect { click_button submit }.to change(User, :count).by(1)
-      end
+      #
+      #it "should create a user" do
+      #  expect { click_button submit }.to change(User, :count).by(1)
+      #end
     end
   end
 end

@@ -1,27 +1,24 @@
 class SessionsController < ApplicationController
 
+	#Listing 8.3
 	def new
-	end
+  end
 
-	def create
-		user = User.find_by(email: params[:session][:email].downcase)
-    	if user && user.authenticate(params[:session][:password])
-      		# Sign the user in and redirect to the user's show page.
-      		sign_in user
-      		redirect_to user
-    	else
-    		
-    		# Flash [:error] comes from bootstap CSS
-      		flash.now[:error] = 'Invalid email/password combination'
+  def create
+  	user = User.find_by(email: params[:session][:email].downcase)
+    if user && user.authenticate(params[:session][:password])
+      sign_in user
+      redirect_to user
+    else
+      flash.now[:error] = 'Invalid email/password combination'
+      render 'new'
+    end
+  end
 
-			# This line activates the link signin to show the page view new.html.erb
-			render 'new'
-		end
-	end
-
-	def destroy
-		sign_out
-		redirect_to root_url
-	end
+  #Listing 8.29
+  def destroy
+    sign_out
+    redirect_to root_url
+  end
 
 end
