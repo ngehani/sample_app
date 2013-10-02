@@ -4,6 +4,7 @@ describe "User pages" do
 
   subject { page }
 
+  # Listing 7.6
   describe "profile page" do
     let(:user) { FactoryGirl.create(:user) }
     before { visit user_path(user) }

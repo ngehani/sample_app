@@ -1,15 +1,5 @@
 @import "bootstrap";
-
-/* mixins, variables, etc. */
-
-$grayMediumLight: #eaeaea;
-
-/* Rails Tutorial Sign-up Section 7-1 adding pretty debug box */
-@mixin box_sizing {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
+@import "mixins";
 
 
 /* universal */
@@ -37,34 +27,6 @@ textarea {
   }
 }
 
-/* typography */
-
-h1, h2, h3, h4, h5, h6 {
-  line-height: 1;
-}
-
-h1 {
-  font-size: 3em;
-  letter-spacing: -2px;
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-h2 {
-  font-size: 1.2em;
-  letter-spacing: -1px;
-  margin-bottom: 30px;
-  text-align: center;
-  font-weight: normal;
-  color: $grayLight;
-}
-
-p {
-  font-size: 1.1em;
-  line-height: 1.7em;
-}
-
-/* typography */
 
 #logo {
   float: left;
@@ -112,23 +74,17 @@ footer {
 
 /* footer */
 
-
 /* miscellaneous - Rails Tutorial Sign-up Section 7-2 adding pretty debug box */
-
 
 .debug_dump {
   clear: both;
   float: left;
   width: 100%;
   margin-top: 45px;
-  @include box_sizing;
+  @include box-sizing;
 }
 
-/* miscellaneous */
-
-
 /* sidebar */
-
 
 aside {
   section {

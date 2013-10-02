@@ -3,8 +3,8 @@
 #Enabled by factory_girl_rails 4.2.1
 FactoryGirl.define do
   factory :user do
-    name     "Michael Hartl"
-    email    "michael@example.com"
+    name     "Neil Gehani"
+    email    "user@example.com"
     password "foobar"
     password_confirmation "foobar"
   end
