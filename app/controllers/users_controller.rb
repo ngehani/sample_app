@@ -1,12 +1,13 @@
 class UsersController < ApplicationController
+  before_action :signed_in_user, only: [:index, :edit, :update, :destroy]
+  before_action :correct_user,   only: [:edit, :update]
+  #Listing 9.46
+  before_action :admin_user,     only: :destroy
 
-	def show
-		@user = User.find(params[:id])
-	end
-	
-	def new
-	
-	end
+  #Listing 9.21, 9.23, 9.34 (uses will_paginate method)
+  def index
+    @users = User.paginate(page: params[:page])
+  end
 
   def show
   	@user = User.find(params[:id])
@@ -27,10 +28,50 @@ class UsersController < ApplicationController
   	end
   end
 
-  private
-
-  def user_params
-  	params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  # Listing 9.14
+  def edit
   end
 
+  #Lsting 9.8, Listing 9.10, Listing 9.14
+  def update
+    if @user.update_attributes(user_params)
+      flash[:success] = "Profile updated"
+      redirect_to @user
+    else
+      render 'edit'
+    end
+  end
+
+  #Listing 9.44
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = "User deleted."
+    redirect_to users_url
+  end
+
+  private
+
+    def user_params
+    	params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    end
+
+    # Before filters
+    # Listing 9.12, Listing 9.18
+    def signed_in_user
+      unless signed_in?
+        store_location
+        redirect_to signin_url, notice: "Please sign in."
+      end
+    end
+
+    #Listing 9.14
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless current_user?(@user)
+    end
+
+    #Listing 9.46
+    def admin_user
+        redirect_to(root_url) unless current_user.admin?
+    end
 end
