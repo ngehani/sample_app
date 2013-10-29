@@ -13,4 +13,10 @@ FactoryGirl.define do
       admin true
     end
   end
+
+  #Listing 10.9
+  factory :micropost do
+    content "Lorem ipsum"
+    user
+  end
 end

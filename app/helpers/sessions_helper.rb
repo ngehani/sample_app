@@ -28,6 +28,14 @@ module SessionsHelper
     user == current_user
   end
 
+  #Listing 10.24
+  def signed_in_user
+    unless signed_in?
+      store_location
+      redirect_to signin_url, notice: "Please sign in."
+    end
+  end
+
   #Listing 8.30
   def sign_out
     self.current_user = nil

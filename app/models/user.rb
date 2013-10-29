@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+	#Listing 10.8, 10.13
+	has_many :microposts, dependent: :destroy
 	#before_save { self.email = email.downcase }
 	#Changed per excercises in Rails Tutorial - Section 6.5
 	has_secure_password
@@ -18,6 +20,12 @@ class User < ActiveRecord::Base
 	def User.encrypt(token)
 		Digest::SHA1.hexdigest(token.to_s)
 	end
+
+	#Listing 10.36
+	def feed
+    # This is preliminary. See "Following users" for the full implementation.
+    	Micropost.where("user_id = ?", id)
+  	end
 
 	private
 
