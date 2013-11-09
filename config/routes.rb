@@ -1,10 +1,18 @@
 SampleApp::Application.routes.draw do
 
-  #get "users/new"
-  resources :users
+  #get "users/new" listing 11.18
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+  
   resources :sessions, only: [:new, :create, :destroy]
   #Listing 10.22
   resources :microposts, only: [:create, :destroy]
+  #Listing 11.24
+  resources :relationships, only: [:create, :destroy]
+  
   root  to: 'static_pages#home'
 
   # For every resource there is a match - via are HTTP request method
